@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            box-sizing: inherit;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: bisque;
+        }
+
+        nav a {
+            position: relative;
+            text-decoration: none;
+            margin: 0 30px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            background-color: red;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+        }
+
+        nav a.selecionado::after,
+        nav a:hover::after {
+            opacity: 1;
+        }
+
+        section {
+            background-color: brown;
+            height: 100vh;
+            scroll-margin-top: 50px;
+        }
+
+        #seccion-1 {
+            padding-top: 50px;
+        }
+
+        section:nth-child(2n){
+            background-color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="#seccion-1" class="selecionado">Enlace 1</a>
+            <a href="#seccion-2">Enlace 2</a>
+            <a href="#seccion-3">Enlace 3</a>
+            <a href="#seccion-4">Enlace 4</a>
+            <a href="#seccion-5">Enlace 5</a>
+        </nav>
+    </header>
+
+    <section id="seccion-1">section-1</section>
+    <section id="seccion-2">section-2</section>
+    <section id="seccion-3">section-3</section>
+    <section id="seccion-4">section-4</section>
+    <section id="seccion-5">seccion-5</section>
+
+    <script>
+        const observador = new IntersectionObserver((entradas) => {
+            entradas.forEach((entrada) => {
+                const id_seccion = entrada.target.getAttribute('id')
+                console.log(id_seccion);
+                const enlace = document.querySelector(`header nav a[href="#${id_seccion}"]`)
+                console.log(enlace);
+
+                if (entrada.isIntersecting) {
+                    console.log('HLAS');
+                    document.querySelector('header nav a.selecionado').classList.remove('selecionado')
+                    enlace.classList.add('selecionado')
+                }
+            })
+        }, {rootMargin: '-30% 0px -70% 0px'})
+
+        const enlaces = document.querySelectorAll('header nav a[href^="#"]')
+
+        enlaces.forEach((enlace) => {
+            const hasd = enlace.getAttribute('href')
+            const secciones = document.querySelector(hasd)
+            if (secciones) {
+                observador.observe(secciones)
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

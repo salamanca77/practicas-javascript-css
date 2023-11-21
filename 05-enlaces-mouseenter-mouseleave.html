@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header{
+            position: relative;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            background-color: blue;
+        }
+
+        nav{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            background-color: aqua;
+            justify-content: center;
+        }
+        
+        ul{
+            display: flex;
+        }
+
+        ul li{
+            list-style-type: none;
+            padding: 0 25px;
+        }
+
+        ul li a{
+            text-decoration: none;
+        }
+
+        #menu-backdrop {
+            position: absolute;
+            transform: translateY(var(--top));
+            transform: translateX(var(--left));
+            width: var(--width);
+            height: var(--height);
+            border-radius: 5px;
+            top: 16px;
+            left: 0;
+            background-color: blueviolet;
+            transition: all 0.7s ease-in-out;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header id="landing-header">
+        <nav>
+            <ul>
+                <li><a href="">enlace-1</a></li>
+                <li><a href="">enlace-2sss</a></li>
+                <li><a href="">enlace-3</a></li>
+                <li><a href="">enlace-4</a></li>
+                <li><a href="">enlace-5</a></li>
+            </ul>
+        </nav>
+        <div id="menu-backdrop"></div>
+    </header>
+    
+
+    <script>
+        const listItem = document.querySelectorAll("#landing-header li")
+        const menuBackDrop = document.querySelector("#menu-backdrop")
+
+        listItem.forEach((item) => {
+            item.addEventListener("mouseenter", () => {
+                const { left, top, width, height } = item.getBoundingClientRect()
+                console.log('left', left);
+                console.log('top', top);
+                console.log('width', width);
+                console.log('height', height);
+
+                menuBackDrop.style.setProperty("--left", `${left}px`)
+                menuBackDrop.style.setProperty("--top", `${top}px`)
+                menuBackDrop.style.setProperty("--width", `${width}px`)
+                menuBackDrop.style.setProperty("--height", `${height}px`)
+
+                menuBackDrop.style.opacity = "1"
+                menuBackDrop.style.visibility = "visible"
+            })
+
+            item.addEventListener("mouseleave", () => {
+                menuBackDrop.style.opacity = "0"
+                menuBackDrop.style.visibility = "hidden"
+            })
+        })
+    </script>
+
+</body>
+
+</html>

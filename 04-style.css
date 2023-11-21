@@ -1,0 +1,115 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+nav .movie{
+    display: none;
+}
+
+nav .logo{
+    min-width: 250px;
+}
+
+nav a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 20px 20px;
+}
+nav a:hover{
+    color:black;
+    background-color: aqua;
+}
+
+nav .escritorio{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .escritorio .seccionUno,
+nav .escritorio .seccionDos{
+    display: flex;
+}
+
+nav .escritorio .seccionTres.mini{
+    display: none;
+}
+
+nav .movie .header{
+    display: flex;
+    justify-content: space-between;
+}
+
+nav .movie .header button{
+    border: none;
+    background-color: red;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.emerger{
+    display: none;
+}
+
+@media screen and (max-width:783px){
+    nav a{
+        max-width: 100px;
+    }
+    
+    nav .seccionDos.full{
+        display: none;
+    }
+
+    nav .seccionTres.mini{
+        display: block !important;
+    }
+
+    nav .seccionTres.mini .submini{
+        position: absolute;
+        background-color: black;
+        display: none;
+        width: 200px;
+        right: 0;
+    }
+
+    nav .seccionTres.mini:hover .submini{
+        display: block;
+    }
+
+
+}
+
+@media screen and (max-width:584px) {
+      nav .escritorio{
+        display: none;
+      }  
+
+      nav .movie{
+        display: block;
+      }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./04-style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <nav>
+        <div class="movie">
+            
+            <div class="header">
+                <div class="logo">Logo</div>
+                <div id="boton" class="mas"><button>Mas</button></div>
+            </div>
+            
+            <div id="enlace" class="links emerger">
+                <a href="">Servicios</a>
+                <a href="">Acerca</a>
+                <a href="">Contacto</a>
+                <a href="">Buscar</a>
+                <a href="">Sign up</a>
+                <a href="">Login</a>
+            </div>
+        </div>
+
+        <div class="escritorio">
+            <div class="logo">Logo</div>
+            
+            <div class="seccionUno">
+                <a href="">Servicios</a>
+                <a href="">Acerca</a>
+                <a href="">Contacto</a>
+            </div>
+
+            <div class="seccionDos full">
+                <a href="">Buscar </a>
+                <a href="">Sign up</a>
+                <a href="">Login</a>
+            </div>
+
+            <div class="seccionTres mini">
+                <a href="">Mas</a>
+                <div class="submini">
+                    <a href="">Buscar </a>
+                    <a href="">Sing up</a>
+                    <a href="">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const $botton = document.querySelector('#boton')
+        const $enlace = document.querySelector('#enlace')
+
+        $botton.addEventListener('click', e =>{
+            $enlace.classList.toggle('emerger')
+        })
+    </script>
+</body>
+
+</html>

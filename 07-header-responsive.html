@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css  "
+    />
+    <link rel="stylesheet" href="./07-style.css" />
+
+    <style>
+      :root {
+        --theme-color: white;
+        --primary-color: #124f88;
+        --secundary-color: #f7c331;
+        --text-color-inverse: white;
+        --text-color: black;
+        --navbar-shallow-color: #e5e5e5;
+        --menu-mobile-background-color: #3a4460;
+      }
+
+      .header_top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 4px 5px var(--navbar-shallow-color);
+      }
+
+      .nav_top {
+        max-width: 980px;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        padding: 10px;
+      }
+
+      .nav_top a img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .nav_top div {
+        margin-left: 5px;
+      }
+      .a_top {
+        display: flex;
+        align-items: center;
+      }
+
+      header ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        line-height: 50px;
+      }
+
+      header ul a {
+        text-decoration: none;
+        padding: 0 15px;
+        font-weight: 500;
+        font-size: 18px;
+        color: var(--text-color);
+        text-transform: uppercase;
+      }
+
+      .cerrar,
+      .hamburguesa {
+        display: none;
+      }
+
+      @media (max-width: 570px) {
+        .menu {
+          position: fixed;
+          top: 0;
+          left: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          background-color: var(--menu-mobile-background-color);
+          overflow-y: auto;
+          pointer-events: none;
+          left: 100%;
+          transition: all 0.5s;
+        }
+
+        .menu li a {
+          color: var(--text-color-inverse);
+          line-height: 60px;
+        }
+
+        .cerrar,
+        .hamburguesa {
+          display: block;
+          background: none;
+          cursor: pointer;
+          border: 0;
+        }
+
+        .hamburguesa {
+          align-self: flex-end;
+          padding: 18px;
+        }
+      }
+
+      .menu_mostra {
+        opacity: 1;
+        left: 0;
+        pointer-events: all;
+      }
+    </style>
+    <title>Document</title>
+    <aside></aside>
+  </head>
+
+  <body>
+    <header class="header_top">
+      <nav class="nav_top">
+        <a class="a_top" href="">
+          <img src="./images/01-tigre.png" alt="" />
+          <div>
+            Empresa<br />
+            S.A.
+          </div>
+        </a>
+        <button class="cerrar">
+          <img src="./svg/hamburger-icon.svg" alt="" />
+        </button>
+        <ul class="menu">
+          <button class="hamburguesa">
+            <img src="./svg/close-icon.svg" alt="" />
+          </button>
+          <li><a href="">Enlace-4</a></li>
+          <li><a href="">Enlace-4</a></li>
+          <li><a href="">Enlace-4</a></li>
+          <li><a href="">Enlace-4</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <script>
+      const menu = document.querySelector(".menu");
+      const cerrar = document.querySelector(".cerrar");
+      const hamburguesa = document.querySelector(".hamburguesa");
+
+      function toggle() {
+        menu.classList.toggle("menu_mostra");
+      }
+
+      cerrar.addEventListener("click", toggle);
+      hamburguesa.addEventListener("click", toggle);
+    </script>
+  </body>
+</html>
