@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+      body {
+        margin: 0;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+      }
+
+      header ul {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        list-style: none;
+      }
+
+      header ul li {
+        margin: 0 15px;
+      }
+
+      header ul li a {
+        color: #f3f3f3;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      body {
+        background: url("../images/01-tigre.png") no-repeat center center fixed;
+        background-size: cover;
+      }
+
+      section {
+        height: 100vh;
+        color: #f3f3f3;
+        padding: 50px;
+      }
+
+      section > h3 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="idHeader">
+      <nav>
+        <ul>
+          <li><a href="">enlace-1</a></li>
+          <li><a href="">enlace-2</a></li>
+          <li><a href="">enlace-3</a></li>
+          <li><a href="">enlace-4</a></li>
+          <li><a href="">enlace-5</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="sectionUno">
+      <h3>Seccion Uno</h3>
+    </section>
+    <section class="sectionDos">
+      <h3>Seccion Dos</h3>
+    </section>
+    <script>
+      const header = document.querySelector("#idHeader");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.style.backgroundColor = "green";
+        } else {
+          header.style.backgroundColor = "transparent";
+        }
+      });
+    </script>
+  </body>
+</html>
