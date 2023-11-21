@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      .videos {
+        text-align: center;
+        padding: 50px 0;
+      }
+
+      .videos #slider #controles {
+        display: flex;
+        justify-content: center;
+      }
+
+      .videos #slider #controles #prevbuttom,
+      .videos #slider #controles #nextbuttom {
+        border: 0;
+        width: 80px;
+        height: 50px;
+        background-color: rgb(58, 58, 58, 58);
+        color: white;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+
+      .videos #slider #controles:hover #prevbuttom,
+      .videos #slider #controles:hover #nextbuttom {
+        background-color: rgba(37, 37, 37, 37);
+      }
+
+      .videos #slider #containerListMovies {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+      }
+
+      .videos #slider #containerListMovies .item img {
+        cursor: pointer;
+      }
+
+      .videos #slider #containerListMovies .item:hover img {
+        opacity: 0.6;
+        object-fit: contain;
+      }
+
+      .videos #slider #containerListMovies .item {
+        position: relative;
+      }
+
+      .videos #slider #containerListMovies .item a::before {
+        content: "👌";
+        position: absolute;
+        left: 150px;
+        top: 75px;
+        color: white;
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+
+    <title>Document</title>
+  </head>
+
+  <body>
+    <section class="videos">
+      <div id="slider">
+        <div id="controles">
+          <button id="prevbuttom">
+            <span>
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 -960 960 960"
+                  width="24"
+                >
+                  <path
+                    d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"
+                  /></svg
+              ></span>
+            </span>
+          </button>
+          <button id="nextbuttom">
+            <span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+              >
+                <path
+                  d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"
+                /></svg
+            ></span>
+          </button>
+        </div>
+
+        <div id="containerMovies"></div>
+
+        <div id="containerListMovies"></div>
+      </div>
+    </section>
+    <script>
+      const controles = document.querySelector("#controles");
+      const prevbuttom = document.querySelector("#prevbuttom");
+      const nextbuttom = document.querySelector("#nextbuttom");
+
+      const containerMovies = document.querySelector("#containerMovies");
+      const containerListMovies = document.querySelector(
+        "#containerListMovies"
+      );
+
+      const dataVideos = [
+        { id: "T_j60n1zgu0" },
+        { id: "2qgs7buSnHQ" },
+        { id: "T_j60n1zgu0" },
+        { id: "VcxXipZg1-0" },
+      ];
+
+      let indexDataVideo = 0;
+
+      prevbuttom.addEventListener("click", (e) => {
+        let cambio = indexDataVideo;
+        indexDataVideo =
+          indexDataVideo - 1 > 0 ? indexDataVideo - 1 : indexDataVideo;
+
+        if (cambio != indexDataVideo)
+          renderVideo(dataVideos[indexDataVideo].id);
+      });
+
+      nextbuttom.addEventListener("click", (e) => {
+        let cambio = indexDataVideo;
+
+        indexDataVideo =
+          indexDataVideo + 1 < dataVideos.length
+            ? indexDataVideo + 1
+            : indexDataVideo;
+
+        if (cambio != indexDataVideo)
+          renderVideo(dataVideos[indexDataVideo].id);
+      });
+
+      renderVideo(dataVideos[0].id);
+
+      renderListMovie();
+
+      function renderListMovie() {
+        const html = dataVideos.map((dataVideo, index) => {
+          return `
+                  <div class="item" >
+                      <a href="#" data-id="${index}">
+                          <img src="https://img.youtube.com/vi/${dataVideo.id}/mqdefault.jpg">
+                       </a>
+                  </div>
+                  `;
+        });
+        containerListMovies.innerHTML = html.join("");
+
+        document.querySelectorAll(".item a").forEach((item) => {
+          item.addEventListener("click", (e) => {
+            e.preventDefault();
+            const id = +item.getAttribute("data-id");
+            indexDataVideo = id;
+            renderVideo(dataVideos[indexDataVideo].id);
+          });
+        });
+      }
+
+      function renderVideo(id) {
+        containerMovies.innerHTML = `
+                  <iframe width="873" height="491" src="https://www.youtube.com/embed/${id}?list=PLV8x_i1fqBw0B008sQn79YxCjkHJU84pC" title="Creando Custom Hooks y usando Context para conseguir un estado global en ReactJS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              `;
+      }
+      /* https://www.youtube.com/watch?v=T_j60n1zgu0&list=PLV8x_i1fqBw0B008sQn79YxCjkHJU84pC&index=1
+          https://www.youtube.com/watch?v=2qgs7buSnHQ&list=PLV8x_i1fqBw0B008sQn79YxCjkHJU84pC&index=3
+          https://www.youtube.com/watch?v=2qgs7buSnHQ&list=PLV8x_i1fqBw0B008sQn79YxCjkHJU84pC&index=3
+          https://www.youtube.com/watch?v=VcxXipZg1-0&list=PLV8x_i1fqBw0B008sQn79YxCjkHJU84pC&index=4 */
+
+      /* https://i3.ytimg.com/vi/T_j60n1zgu0/hqdefault.jpg */
+    </script>
+  </body>
+</html>
