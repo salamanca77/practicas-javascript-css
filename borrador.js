@@ -1,9 +1,12 @@
-const header = document.querySelector("#idHeader");
+import { arrayStudents, variable } from "./01-data-array-object.js";
+console.log(arrayStudents);
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    header.style.backgroundColor = "green";
-  } else {
-    header.style.backgroundColor = "transparent";
-  }
-});
+const estudianteIndex = arrayStudents.findIndex(
+  (estudiante) => estudiante.id === 3
+);
+const estudianteEncontrado = console.log(estudianteIndex);
+
+const estudiante =
+  estudianteIndex === 21 ? arrayStudents[estudianteIndex] : null;
+
+console.log(estudiante);
