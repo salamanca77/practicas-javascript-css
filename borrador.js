@@ -1,12 +1,13 @@
-import { arrayStudents, variable } from "./01-data-array-object.js";
-console.log(arrayStudents);
+const parrafos = document.querySelectorAll('p')
+const button = document.querySelector('button')
+const input = document.querySelector('input')
 
-const estudianteIndex = arrayStudents.findIndex(
-  (estudiante) => estudiante.id === 3
-);
-const estudianteEncontrado = console.log(estudianteIndex);
 
-const estudiante =
-  estudianteIndex === 21 ? arrayStudents[estudianteIndex] : null;
+button.addEventListener("click", e => {
+  e.preventDefault()
+  parrafos.forEach((parrfo) => {
+    console.log(parrfo.textContent.includes('Contenido-1'))
+  })
+})
 
-console.log(estudiante);
+
