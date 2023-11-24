@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .ocultar {
+        display: none;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+      }
+
+      .container {
+        max-width: 980px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 20px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" class="text" />
+      <button>Buscar</button>
+    </form>
+    <section class="container">
+      <p>Contenido-1</p>
+      <p>Contenido-2</p>
+      <p>Contenido-3</p>
+      <p>Contenido-4</p>
+      <p>Contenido-5</p>
+      <p>Contenido-6</p>
+      <p>Contenido-5</p>
+      <p>texto-5</p>
+      <p>texto-5</p>
+      <p>texto-6</p>
+      <p>texto-6</p>
+      <p>datos-5</p>
+      <p>texto-5</p>
+      <p>datos-4</p>
+      <p>datos-4</p>
+      <p>datos-1</p>
+      <p>texto-2</p>
+    </section>
+
+    <script>
+      const p = document.querySelectorAll("p");
+      const input = document.querySelector("input");
+      const button = document.querySelector("button");
+
+      /* BUSQUEDA - EVENTO KEYUP */
+      const busquedaKEYUP = (p, input) => {
+        input.addEventListener("keyup", (e) => {
+          e.preventDefault();
+
+          p.forEach((parrafo) => {
+            parrafo.textContent
+              .toLowerCase()
+              .includes(input.value.toLowerCase())
+              ? parrafo.classList.remove("ocultar")
+              : parrafo.classList.add("ocultar");
+          });
+        });
+      };
+
+      //   busquedaKEYUP(p, input);
+
+      const busquedaCLICK = (p, button, input) => {
+        button.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          p.forEach((parrafo) => {
+            parrafo.textContent
+              .toLowerCase()
+              .includes(input.value.toLowerCase())
+              ? parrafo.classList.remove("ocultar")
+              : parrafo.classList.add("ocultar");
+          });
+        });
+      };
+
+      busquedaCLICK(p, button, input);
+    </script>
+  </body>
+</html>
