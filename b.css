@@ -1,0 +1,24 @@
+.uno{
+    position: relative;
+    width: 200px;
+    height: 100px;
+    background-color: aqua;
+}
+
+.dos{
+    position: relative;
+    width: 200px;
+    height: 100px;
+    background-color: blueviolet;
+    left: 100px;
+}
+h1{
+    position: absolute;
+    background-color: brown;
+    top: 0;
+    margin: 0;    
+}
+
+p{
+    position: fixed;
+}
